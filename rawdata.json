@@ -1,0 +1,109 @@
+{
+  "name": "testing",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "VuzTZ",
+  "actions": [
+    {
+      "comment": "Webhook Function",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook.id",
+      "changeType": "0",
+      "value": "YOUR_WEBHOOK_ID",
+      "name": "Control Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook.token",
+      "changeType": "0",
+      "value": "YOUR_WEBHOOK_TOKEN",
+      "name": "Control Variable"
+    },
+    {
+      "searchCommandBy": "2",
+      "valueToSearch": "",
+      "info": "0",
+      "storage": "1",
+      "varName": "command.name",
+      "name": "Store Command Info"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "username",
+      "name": "Store Member Info"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "command.server.name",
+      "name": "Store Server Info"
+    },
+    {
+      "code": "Date.now();",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "1",
+      "varName": "date",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "time": "${tempVars(\"date\")}",
+      "storage": "1",
+      "varName": "date.now",
+      "name": "Convert Timestamp to Date"
+    },
+    {
+      "id": "${tempVars(\"webhook.id\")}",
+      "token": "${tempVars(\"webhook.token\")}",
+      "storage": "1",
+      "varName": "webhook",
+      "name": "Find Webhook"
+    },
+    {
+      "title": "${tempVars(\"command.name\")}",
+      "author": "",
+      "color": "",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "em",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "em",
+      "message": "${tempVars(\"username\")} called the command:\n\n`${tempVars(\"command.name\")}`\n\nin server:\n\n${tempVars(\"command.server.name\")}\n\nat:\n\n${tempVars(\"date.now\")}",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook",
+      "storage2": "1",
+      "varName2": "em",
+      "name": "Send Embed to Webhook"
+    }
+  ]
+}
